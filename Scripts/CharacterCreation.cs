@@ -24,8 +24,8 @@ public class CharacterCreation : MonoBehaviour
     private string selectedPersonality;
 
     // List of available options
-    private List<string> genders = new List<string> { "Male", "Female" };
-    private List<string> races = new List<string> { "Caucasian", "Asian", "African" };
+    private List<string> genders = new List<string> { "Male", "Female" }; // Only Male and Female
+    private List<string> races = new List<string> { "Caucasian", "African", "Asian" }; // Only three races
     private List<string> hairstyles = new List<string> { "Short Hair", "Long Hair", "Bald" };
     private List<string> clothing = new List<string> { "Suit", "Casual", "Military Uniform" };
     private List<string> countries = new List<string> { "United States", "Russia", "China", "Serbia" };
@@ -77,7 +77,8 @@ public class CharacterCreation : MonoBehaviour
     {
         // Load leader models from resources or prefabs
         leaderModels["Male_Caucasian_ShortHair_Suit"] = Resources.Load<GameObject>("Prefabs/Leaders/Male_Caucasian_ShortHair_Suit");
-        leaderModels["Female_Asian_LongHair_Casual"] = Resources.Load<GameObject>("Prefabs/Leaders/Female_Asian_LongHair_Casual");
+        leaderModels["Female_African_LongHair_Casual"] = Resources.Load<GameObject>("Prefabs/Leaders/Female_African_LongHair_Casual");
+        leaderModels["Male_Asian_Bald_MilitaryUniform"] = Resources.Load<GameObject>("Prefabs/Leaders/Male_Asian_Bald_MilitaryUniform");
         // Add more models as needed
     }
 
@@ -90,14 +91,14 @@ public class CharacterCreation : MonoBehaviour
         }
 
         // Create new leader model based on selected options
-        string modelKey = selectedGender + "_" + selectedRace + "_" + selectedHairstyle + "_" + selectedClothing;
+        string modelKey = $"{selectedGender}_{selectedRace}_{selectedHairstyle}_{selectedClothing}";
         if (leaderModels.ContainsKey(modelKey))
         {
             leaderModel = Instantiate(leaderModels[modelKey], transform.position, Quaternion.identity);
         }
         else
         {
-            Debug.LogWarning("Model not found for key: " + modelKey);
+            Debug.LogWarning($"Model not found for key: {modelKey}");
         }
     }
 
@@ -112,19 +113,19 @@ public class CharacterCreation : MonoBehaviour
         randomPersonality = personalities[Random.Range(0, personalities.Count)];
 
         Debug.Log("Randomly Generated Leader Properties:");
-        Debug.Log("Gender: " + randomGender);
-        Debug.Log("Race: " + randomRace);
-        Debug.Log("Hairstyle: " + randomHairstyle);
-        Debug.Log("Clothing: " + randomClothing);
-        Debug.Log("Country: " + randomCountry);
-        Debug.Log("Personality: " + randomPersonality);
+        Debug.Log($"Gender: {randomGender}");
+        Debug.Log($"Race: {randomRace}");
+        Debug.Log($"Hairstyle: {randomHairstyle}");
+        Debug.Log($"Clothing: {randomClothing}");
+        Debug.Log($"Country: {randomCountry}");
+        Debug.Log($"Personality: {randomPersonality}");
     }
 
     void OnGenderChanged(int index)
     {
         // Update selected gender
         selectedGender = genders[index];
-        Debug.Log("Selected Gender: " + selectedGender);
+        Debug.Log($"Selected Gender: {selectedGender}");
         UpdateLeaderModel();
     }
 
@@ -132,7 +133,7 @@ public class CharacterCreation : MonoBehaviour
     {
         // Update selected race
         selectedRace = races[index];
-        Debug.Log("Selected Race: " + selectedRace);
+        Debug.Log($"Selected Race: {selectedRace}");
         UpdateLeaderModel();
     }
 
@@ -140,7 +141,7 @@ public class CharacterCreation : MonoBehaviour
     {
         // Update selected hairstyle
         selectedHairstyle = hairstyles[index];
-        Debug.Log("Selected Hairstyle: " + selectedHairstyle);
+        Debug.Log($"Selected Hairstyle: {selectedHairstyle}");
         UpdateLeaderModel();
     }
 
@@ -148,7 +149,7 @@ public class CharacterCreation : MonoBehaviour
     {
         // Update selected clothing
         selectedClothing = clothing[index];
-        Debug.Log("Selected Clothing: " + selectedClothing);
+        Debug.Log($"Selected Clothing: {selectedClothing}");
         UpdateLeaderModel();
     }
 
@@ -156,14 +157,14 @@ public class CharacterCreation : MonoBehaviour
     {
         // Update selected country
         selectedCountry = countries[index];
-        Debug.Log("Selected Country: " + selectedCountry);
+        Debug.Log($"Selected Country: {selectedCountry}");
     }
 
     void OnPersonalityChanged(int index)
     {
         // Update selected personality
         selectedPersonality = personalities[index];
-        Debug.Log("Selected Personality: " + selectedPersonality);
+        Debug.Log($"Selected Personality: {selectedPersonality}");
     }
 
     void OnCreateButtonClick()
@@ -183,7 +184,6 @@ public class CharacterCreation : MonoBehaviour
             selectedClothing = randomClothing;
             selectedCountry = randomCountry;
             selectedPersonality = randomPersonality;
-
             CreateLeader();
             errorText.text = "Leader created with random properties!";
         }
@@ -204,12 +204,12 @@ public class CharacterCreation : MonoBehaviour
     {
         // Placeholder for leader creation logic
         Debug.Log("Creating leader with:");
-        Debug.Log("Gender: " + selectedGender);
-        Debug.Log("Race: " + selectedRace);
-        Debug.Log("Hairstyle: " + selectedHairstyle);
-        Debug.Log("Clothing: " + selectedClothing);
-        Debug.Log("Country: " + selectedCountry);
-        Debug.Log("Personality: " + selectedPersonality);
+        Debug.Log($"Gender: {selectedGender}");
+        Debug.Log($"Race: {selectedRace}");
+        Debug.Log($"Hairstyle: {selectedHairstyle}");
+        Debug.Log($"Clothing: {selectedClothing}");
+        Debug.Log($"Country: {selectedCountry}");
+        Debug.Log($"Personality: {selectedPersonality}");
 
         // Here you can add code to instantiate the leader character with the selected attributes
     }
