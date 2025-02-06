@@ -1,2 +1,23 @@
 fileFormatVersion: 2
 guid: eef982f72a9a5cb49804a8f3ed408526
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mediaTypeDropdown: {instanceID: 0}
+  - scandalInput: {instanceID: 0}
+  - createScandalButton: {instanceID: 0}
+  - censorInternetButton: {instanceID: 0}
+  - blockSourcesButton: {instanceID: 0}
+  - releaseMediaTypeButton: {instanceID: 0}
+  - propagandaStatusText: {instanceID: 0}
+  - televisionToggle: {instanceID: 0}
+  - socialMediaToggle: {instanceID: 0}
+  - newspapersToggle: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - uiClickSound: {fileID: 8300000, guid: 4494fca2950f8564aae117d5b434ee78, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
